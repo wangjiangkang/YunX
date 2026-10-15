@@ -1,9 +1,6 @@
 name: Nightly Build APK
-
 on:
-  schedule:
-    - cron: '0 16 * * *'
-  workflow_dispatch:
+  workflow_dispatch: #仅保留手动触发，去掉定时任务
 
 permissions:
   contents: read
@@ -36,8 +33,6 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
-
-      # ========== 删除了【签名证书恢复】整个步骤 ==========
 
       - name: Build release APK (unsigned)
         run: |
